@@ -89,6 +89,7 @@ echo "\end{document}" >> $tex_file
 for((i=0;i<2;++i)); do
 #     latex -shell-escape $tex_file (*)
     pdflatex -shell-escape $tex_file
+#    latex-mk $tex_file
 done
 # dvipdfm -p a4 teambook.dvi (*)
 # uncomment (*) lines if you get auto-pst-pdf error
