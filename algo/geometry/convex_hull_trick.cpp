@@ -1,3 +1,4 @@
+//NO_TEAMBOOK
 //http://opentrains.snarknews.info/~ejudge/team.cgi?contest_id=001325 problem F
 #include <bits/stdc++.h>
 using namespace std;

@@ -1,3 +1,5 @@
+//NO_TEAMBOOK
+
 #define _GLIBCXX_DEBUG
 // Western Subregional 2015. D.
 #include <bits/stdc++.h>

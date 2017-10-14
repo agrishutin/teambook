@@ -1,3 +1,4 @@
+//NO_TEAMBOOK
 // submitted to WF2014::L
 // NO TEAMBOOK
 #include <bits/stdc++.h>

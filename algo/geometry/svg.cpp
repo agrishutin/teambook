@@ -1,3 +1,5 @@
+//NO_TEAMBOOK
+
 #include <bits/stdc++.h>
 using namespace std;
 #include "primitives.cpp"

@@ -1,3 +1,4 @@
+#NO_TEAMBOOK
 """ Decimal """
 from decimal import Decimal as D, getcontext, FloatOperation
 from decimal import ROUND_DOWN

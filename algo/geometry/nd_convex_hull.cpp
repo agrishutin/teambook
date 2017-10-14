@@ -1,3 +1,4 @@
+//NO_TEAMBOOK
 //MIPT2016 autumn workshop I2b: Heroes 2
 #include <bits/stdc++.h>
 using namespace std;

@@ -1,3 +1,4 @@
+//NO_TEAMBOOK
 #define _GLIBCXX_DEBUG
 #include <bits/stdc++.h>
 using namespace std;
