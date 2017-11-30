@@ -1,7 +1,6 @@
 void buildSuffixArray(int* src, int n, int* p) {
     static int s[maxn], scale[maxn], cnt[maxn], color[maxn],
-        start[maxn];
-    static int pp[maxn], cc[maxn];
+        start[maxn], pp[maxn], cc[maxn];
     memcpy(s, src, sizeof(int) * n);
     memcpy(scale, src, sizeof(int) * n);
     sort(scale, scale + n);

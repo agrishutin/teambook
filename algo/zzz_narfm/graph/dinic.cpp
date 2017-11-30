@@ -5,15 +5,9 @@ int esz = 0;
 int head[maxn];
 
 void addEdge(int a, int b, int cap) {
-    to[esz] = b;
-    c[esz] = cap;
-    f[esz] = 0;
-    next[esz] = head[a];
+    to[esz] = b; c[esz] = cap; f[esz] = 0; next[esz] = head[a];
     head[a] = esz++;
-    to[esz] = a;
-    c[esz] = 0;
-    f[esz] = 0;
-    next[esz] = head[b];
+    to[esz] = a; c[esz] = 0; f[esz] = 0; next[esz] = head[b];
     head[b] = esz++;
 }
 

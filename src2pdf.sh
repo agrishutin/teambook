@@ -24,7 +24,11 @@ src2latex() {
     filename=$1
     src=$2
 
-    echo "\newpage" ## start each section on a new page
+    lines=$(wc -l <"$src")
+    if ((lines>40)) ; then
+        echo '\newpage' ## start section on a new page
+    fi
+
     echo "\section{${filename//_/\\_}}"  ## Create a section for each file
 
     ## This command will include the file in the PDF

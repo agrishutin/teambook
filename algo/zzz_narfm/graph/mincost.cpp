@@ -7,22 +7,12 @@ int head[maxn];
 int esz = 0;
 
 void addEdge(int a, int b, int cst, int i) {
-    from[esz] = a;
-    to[esz] = b;
-    c[esz] = 1;
-    f[esz] = 0;
-    cost[esz] = cst;
-    next[esz] = head[a];
-    id[esz] = i;
+    from[esz] = a; to[esz] = b; c[esz] = 1; f[esz] = 0;
+    cost[esz] = cst; next[esz] = head[a]; id[esz] = i;
     head[a] = esz++;
 
-    from[esz] = b;
-    to[esz] = a;
-    c[esz] = 0;
-    f[esz] = 0;
-    cost[esz] = -cst;
-    next[esz] = head[b];
-    id[esz] = i;
+    from[esz] = b; to[esz] = a; c[esz] = 0; f[esz] = 0;
+    cost[esz] = -cst; next[esz] = head[b]; id[esz] = i;
     head[b] = esz++;
 }
 

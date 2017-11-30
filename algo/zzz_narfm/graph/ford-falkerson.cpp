@@ -1,10 +1,7 @@
 struct Edge {
     int to, f, c;
     Edge() {}
-    Edge(int to, int f, int c)
-        : to(to)
-        , f(f)
-        , c(c) {}
+    Edge(int to, int f, int c) : to(to), f(f), c(c) {}
 };
 
 const int maxn;
@@ -63,13 +60,9 @@ int ecnt = 0;
 int head[maxv];
 
 inline void addEdge(int a, int b, int c) {
-    nxt[ecnt] = head[a];
-    to[ecnt] = b;
-    cap[ecnt] = c;
+    nxt[ecnt] = head[a]; to[ecnt] = b; cap[ecnt] = c;
     head[a] = ecnt++;
-    nxt[ecnt] = head[b];
-    to[ecnt] = a;
-    cap[ecnt] = 0;
+    nxt[ecnt] = head[b]; to[ecnt] = a; cap[ecnt] = 0;
     head[b] = ecnt++;
 }
 
