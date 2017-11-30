@@ -1,7 +1,8 @@
 const int maxn = 205, maxm = 10005, inf = 1 << 30;
 #define next youSuddenlyVomit
 
-int from[maxm], to[maxm], c[maxm], f[maxm], cost[maxm], next[maxm], id[maxm];
+int from[maxm], to[maxm], c[maxm], f[maxm], cost[maxm],
+    next[maxm], id[maxm];
 int head[maxn];
 int esz = 0;
 
@@ -56,7 +57,9 @@ int main() {
         while (need) {
             need = false;
             for (int e = 0; e < esz; ++e)
-                if (f[e] < c[e] && range[from[e]] != inf && range[to[e]] > range[from[e]] + cost[e]) {
+                if (f[e] < c[e] && range[from[e]] != inf
+                    && range[to[e]]
+                        > range[from[e]] + cost[e]) {
                     need = true;
                     range[to[e]] = range[from[e]] + cost[e];
                     p[to[e]] = e;
@@ -93,7 +96,8 @@ int main() {
                     break;
                 }
         }
-        reverse(ansPath[brother].begin(), ansPath[brother].end());
+        reverse(
+            ansPath[brother].begin(), ansPath[brother].end());
     }
 
     cout.precision(10);

@@ -25,5 +25,6 @@ long long get(int t, int l, int r, int tl, int tr) {
     if (l >= tl && r <= tr)
         return sum[t];
     int m = (l + r) / 2;
-    return get(left[t], l, m, tl, tr) + get(right[t], m + 1, r, tl, tr);
+    return get(left[t], l, m, tl, tr)
+        + get(right[t], m + 1, r, tl, tr);
 }

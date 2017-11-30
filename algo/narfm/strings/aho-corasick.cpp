@@ -43,9 +43,12 @@ void bfs() {
             if (u == -1)
                 continue;
             t[u].link = (v ? t[t[v].link].go[i] : 0);
-            t[u].upterm = (t[t[u].link].upterm || t[u].term ? 1 : 0);
+            t[u].upterm
+                = (t[t[u].link].upterm || t[u].term ? 1 : 0);
             for (int j = 0; j < alph; ++j)
-                t[u].go[j] = (t[u].next[j] == -1 ? t[t[u].link].go[j] : t[u].next[j]);
+                t[u].go[j]
+                    = (t[u].next[j] == -1 ? t[t[u].link].go[j]
+                                          : t[u].next[j]);
             q[qr++] = u;
         }
     }

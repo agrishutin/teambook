@@ -1,5 +1,6 @@
 void buildSuffixArray(int* src, int n, int* p) {
-    static int s[maxn], scale[maxn], cnt[maxn], color[maxn], start[maxn];
+    static int s[maxn], scale[maxn], cnt[maxn], color[maxn],
+        start[maxn];
     static int pp[maxn], cc[maxn];
     memcpy(s, src, sizeof(int) * n);
     memcpy(scale, src, sizeof(int) * n);
@@ -7,7 +8,8 @@ void buildSuffixArray(int* src, int n, int* p) {
 
     int csz = int(unique(scale, scale + n) - scale);
     for (int i = 0; i < n; ++i)
-        s[i] = int(lower_bound(scale, scale + csz, s[i]) - scale + 1);
+        s[i] = int(
+            lower_bound(scale, scale + csz, s[i]) - scale + 1);
     s[n++] = 0;
     csz++;
 
@@ -21,7 +23,8 @@ void buildSuffixArray(int* src, int n, int* p) {
         p[start[s[i]]++] = i;
     color[p[0]] = 0;
     for (int i = 1; i < n; ++i)
-        color[p[i]] = color[p[i - 1]] + (s[p[i - 1]] == s[p[i]] ? 0 : 1);
+        color[p[i]] = color[p[i - 1]]
+            + (s[p[i - 1]] == s[p[i]] ? 0 : 1);
 
     for (int k = 1; k < n; k <<= 1) {
         memset(cnt, 0, sizeof(int) * n);
@@ -38,7 +41,12 @@ void buildSuffixArray(int* src, int n, int* p) {
         memcpy(p, pp, sizeof(int) * n);
         cc[p[0]] = 0;
         for (int i = 1; i < n; ++i)
-            cc[p[i]] = cc[p[i - 1]] + (color[p[i]] == color[p[i - 1]] && color[(p[i] + k) % n] == color[(p[i - 1] + k) % n] ? 0 : 1);
+            cc[p[i]] = cc[p[i - 1]]
+                + (color[p[i]] == color[p[i - 1]]
+                              && color[(p[i] + k) % n]
+                                  == color[(p[i - 1] + k) % n]
+                          ? 0
+                          : 1);
         memcpy(color, cc, sizeof(int) * n);
     }
     for (int i = 0; i + 1 < n; ++i)
@@ -53,8 +61,7 @@ void buildLcp(int* s, int* sa, int n, int* lcp) {
         if (p[i] + 1 == n)
             continue;
         int j = (i ? max(0, lcp[p[i - 1]] - 1) : 0);
-        while (sa[p[i]] + j < n
-            && sa[p[i] + 1] + j < n
+        while (sa[p[i]] + j < n && sa[p[i] + 1] + j < n
             && s[sa[p[i]] + j] == s[sa[p[i] + 1] + j])
             ++j;
         lcp[p[i]] = j;

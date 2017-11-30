@@ -23,7 +23,8 @@ int dfs(int v, int w) {
     for (size_t i = 0; i < edge[v].size(); ++i) {
         int e = edge[v][i];
         int u = edgelist[e].to;
-        if (used[u] != q && edgelist[e].c - edgelist[e].f >= bound) {
+        if (used[u] != q
+            && edgelist[e].c - edgelist[e].f >= bound) {
             int d = dfs(u, e);
             if (d)
                 return min(d, edgelist[e].c - edgelist[e].f);
@@ -48,7 +49,8 @@ for (bound = 1 << 30; bound > 0;) {
         continue;
     }
     ans += flow;
-    for (int cur = p[sink]; cur != -1; cur = p[edgelist[cur ^ 1].to]) {
+    for (int cur = p[sink]; cur != -1;
+         cur = p[edgelist[cur ^ 1].to]) {
         edgelist[cur].f += flow;
         edgelist[cur ^ 1].f -= flow;
     }

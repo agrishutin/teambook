@@ -17,7 +17,8 @@ void push(int i) {
     tree[i].flag = 0;
 }
 
-void change(int i, int l, int r, int tl, int tr, long long val) {
+void change(
+    int i, int l, int r, int tl, int tr, long long val) {
     if (r < tl || l > tr)
         return;
     if (l >= tl && r <= tr) {
@@ -39,5 +40,6 @@ long long get(int i, int l, int r, int tl, int tr) {
         return tree[i].sum;
     push(i);
     int m = (l + r) / 2, left = i * 2 + 1, right = left + 1;
-    return get(left, l, m, tl, tr) + get(right, m + 1, r, tl, tr);
+    return get(left, l, m, tl, tr)
+        + get(right, m + 1, r, tl, tr);
 }

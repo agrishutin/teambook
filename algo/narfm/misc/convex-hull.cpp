@@ -31,7 +31,9 @@ struct by_angle {
         point ca(corner, a);
         point cb(corner, b);
         // Warning: consider using epsilon!
-        return ca % cb > 0 || (ca % cb == 0 && point(a, corner) * point(a, b) < 0);
+        return ca % cb > 0
+            || (ca % cb == 0
+                   && point(a, corner) * point(a, b) < 0);
     }
     point corner;
 };
@@ -45,7 +47,10 @@ vector<point> hull(vector<point> p) {
     int sz = 0;
     for (size_t i = 0; i < p.size(); ++i) {
         // Warning: consider using epsilon!
-        while (sz > 1 && point(ret[sz - 2], ret[sz - 1]) % point(ret[sz - 1], p[i]) <= 0) {
+        while (sz > 1
+            && point(ret[sz - 2], ret[sz - 1])
+                    % point(ret[sz - 1], p[i])
+                <= 0) {
             ret.pop_back();
             --sz;
         }
