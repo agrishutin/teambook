@@ -6,13 +6,11 @@ inline bool ancestor(int a, int b) {
 
 int climb(int to, int v) {
     int ans = 1 << 30;
-    for (int i = maxk-1; v != to;)
-        if (ancestor(to, p[i][v]))
-        {
+    for (int i = maxk - 1; v != to;)
+        if (ancestor(to, p[i][v])) {
             ans = min(ans, w[i][v]);
             v = p[i][v];
-        }
-        else
+        } else
             --i;
     return ans;
 }
@@ -23,7 +21,7 @@ int getans(int a, int b) {
     if (ancestor(b, a))
         return climb(b, a); // lca=b
     int lca = a;
-    for (int i = maxk-1; !ancestor(p[0][lca], b); )
+    for (int i = maxk - 1; !ancestor(p[0][lca], b);)
         if (ancestor(p[i][lca], b))
             --i;
         else
