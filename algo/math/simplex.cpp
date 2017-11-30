@@ -1,4 +1,3 @@
-//NO_TEAMBOOK
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(x) ((int) (x).size())
