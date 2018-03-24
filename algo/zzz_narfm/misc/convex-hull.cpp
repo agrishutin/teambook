@@ -43,6 +43,15 @@ vector<point> hull(vector<point> p) {
     p.erase(unique(p.begin(), p.end()), p.end());
     sort(p.begin() + 1, p.end(), by_angle(p[0]));
 
+    // Iff non strictly convex
+    auto rit = p.rbegin();
+    while (rit != p.rend()
+        && 0 == Point(p[0], p.back()) % Point(p[0], *rit)
+    ) {
+        ++rit;
+    }
+    reverse(p.rbegin(), rit);
+
     vector<point> ret;
     int sz = 0;
     for (size_t i = 0; i < p.size(); ++i) {
@@ -50,7 +59,7 @@ vector<point> hull(vector<point> p) {
         while (sz > 1
             && point(ret[sz - 2], ret[sz - 1])
                     % point(ret[sz - 1], p[i])
-                <= 0) {
+                <= 0) { // < 0 <-> non-strict convex
             ret.pop_back();
             --sz;
         }
