@@ -24,24 +24,17 @@ inline bool as_pair(const point& a, const point& b) {
     // Warning: consider using epsilon!
     return (a.x == b.x ? a.y < b.y : a.x < b.x);
 }
-struct by_angle {
-    by_angle(const point& corner)
-        : corner(corner) {}
-    inline bool operator()(const point& a, const point& b) {
-        point ca(corner, a);
-        point cb(corner, b);
-        // Warning: consider using epsilon!
-        return ca % cb > 0
-            || (ca % cb == 0
-                   && point(a, corner) * point(a, b) < 0);
-    }
-    point corner;
-};
 
 vector<point> hull(vector<point> p) {
     sort(p.begin(), p.end(), as_pair);
     p.erase(unique(p.begin(), p.end()), p.end());
-    sort(p.begin() + 1, p.end(), by_angle(p[0]));
+    sort(p.begin() + 1, p.end(), [corner=p[0]](point a, point b) {
+        auto cross = point(corner, a) % point(corner, b);
+        // Warning: consider using epsilon!
+        return cross > 0 || (
+            cross == 0 && point(a, corner) * point(a, b) < 0
+        );
+    });
 
     // Iff non strictly convex
     auto rit = p.rbegin();
